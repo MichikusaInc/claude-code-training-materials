@@ -19,7 +19,7 @@ Claude Code 研修の演習で使う素材です。**写っている会社名・
 | `.claude/skills/short-caption/` | 字幕付けの Skill | `video/` の動画に字幕を付ける |
 | `.claude/skills/pptx_michikusa/` | Michikusa の PowerPoint テンプレートと Skill | Skill を使ったスライド作成 |
 | `.claude/skills/skill-creator/` | Skill を作る・直す・試すための Skill (Anthropic 公式) | さっきやった作業を Skill にする |
-| `.claude/skills/grill-me/`<br>`.claude/skills/grilling/` | 計画の穴を質問攻めで見つけてくれる Skill (Matt Pocock 作) | 作りたいものや計画を、着手前に詰める |
+| `.claude/skills/grilling/` | 計画の穴を質問攻めで見つけてくれる Skill (Matt Pocock 作) | 作りたいものや計画を、着手前に詰める |
 
 会議の音声は ElevenLabs の音声合成で作った架空の打ち合わせです (臼井と、架空の担当者「佐藤」の2人)。
 
@@ -34,12 +34,10 @@ ZIP を展開したこのフォルダを Claude Code の作業フォルダに選
 | short-caption | `/short-caption video/sample-talk.mp4` または「この動画に字幕を付けて」 | [uv](https://docs.astral.sh/uv/)、焼き込みには ffmpeg |
 | pptx_michikusa | `/pptx_michikusa` または「Michikusa のテンプレートで 5 枚のスライドを作って」 | [uv](https://docs.astral.sh/uv/) |
 | skill-creator | `/skill-creator` または「さっきの作業を Skill にして」 | なし (Skill を試す評価機能だけ Python を使う) |
-| grill-me | `/grill-me` のあとに、詰めたい計画や作りたいものを書く | なし |
+| grilling | `/grilling` のあとに、詰めたい計画や作りたいものを書く | なし |
 
 どれも API キーやアカウント登録は不要で、Mac / Windows で動きます。uv や ffmpeg が入っていなければ、Claude Code が入れ方を案内します。
 short-caption は初回に文字起こしのモデル (約1.6GB) をダウンロードするので、講座の前に一度動かしておくと当日すぐ使えます。
-
-grill-me は中で grilling を呼ぶので、2つ一緒に置いてください。
 
 ほかのフォルダでも使いたいときは、Skill のフォルダごと `~/.claude/skills/` (Windows は `%USERPROFILE%\.claude\skills\`) にコピーしてください。
 
@@ -50,4 +48,4 @@ grill-me は中で grilling を呼ぶので、2つ一緒に置いてください
 | Skill | 作者 | 出典 | ライセンス |
 |---|---|---|---|
 | skill-creator | Anthropic (Claude の開発元) | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | Apache License 2.0 |
-| grill-me / grilling | Matt Pocock | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity) | MIT License |
+| grilling | Matt Pocock | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity) | MIT License |
