@@ -53,7 +53,7 @@ Michikusaブランドのスライドマスターと4つのレイアウト（Cove
 4. Bullets: 「代表臼井拓水 usutakuについて」
 5. Bullets: 「教育者としての活動」
 
-イントロが不要な場合（社内メモ・練習スライド等）は明示的に外す:
+**Michikusa の社員が Michikusa として登壇する資料以外は、イントロを外す。** 研修の参加者が自分の資料を作るときは、ユーザーが求めない限り必ず外す:
 
 ```python
 d = Deck(include_intro=False)
@@ -69,30 +69,29 @@ d = Deck(include_intro=False)
 
 ## 手順
 
-### 1. プロジェクトフォルダを作る
+以下 `<skill>` はこの SKILL.md があるフォルダのパス。テンプレートと `michikusa_pptx.py` は `<skill>` に置いたまま使い、コピーしない。
 
-`~/dev-projects/<プロジェクト名>/` を作成し、以下をコピー:
+### 1. 作業フォルダを決める
 
-```bash
-mkdir -p ~/dev-projects/<プロジェクト名>
-cp ~/.claude/skills/pptx_michikusa/michikusa.pptx ~/dev-projects/<プロジェクト名>/
-cp ~/.claude/skills/pptx_michikusa/michikusa_pptx.py ~/dev-projects/<プロジェクト名>/
-```
+ユーザーがいま開いているフォルダ (無ければ新しいフォルダ) に `build.py` と出力を置く。
 
-### 2. 依存をインストール（初回のみ）
+### 2. uv を用意する（初回のみ）
 
-```bash
-pip3 install python-pptx budoux --break-system-packages
-```
+`uv --version` で確認し、無ければユーザーに確認してから入れる。uv が python-pptx と BudouX をこのスクリプト専用に用意するので、`pip install` は使わない。
+
+- Mac: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- Windows: `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
 
 ### 3. ビルドスクリプトを書く
 
 `build.py` を作成し、以下のように `Deck` を使ってスライドを組み立てる:
 
 ```python
+import sys
+sys.path.insert(0, r"<skill>")  # この SKILL.md があるフォルダの絶対パスに置き換える
 from michikusa_pptx import Deck
 
-d = Deck()  # michikusa.potx を自動ロード
+d = Deck(include_intro=False)  # Michikusa の会社紹介が要るときだけ Deck()
 
 # 表紙
 d.cover("プレゼンタイトル", "サブタイトル")
@@ -127,13 +126,12 @@ d.save("output.pptx")
 ### 4. 実行
 
 ```bash
-cd ~/dev-projects/<プロジェクト名>
-python3 build.py
+uv run --with python-pptx --with budoux python build.py
 ```
 
 ### 5. （任意）PDF・プレビュー化
 
-PowerPointで開いて確認、または:
+PowerPointで開いて確認する。Windows は PowerPoint の「エクスポート → PDF」。Mac で PowerPoint が入っていれば次でも書き出せる:
 
 ```bash
 # 重要: 既に同じファイルを開いていると古い内容のままPDFが出る。必ず一度閉じてから開き直す。
@@ -243,7 +241,7 @@ for slide in prs.slides:
   from pptx.util import Inches
   s.shapes.add_picture("path/to/img.png", Inches(7.5), Inches(2.5), height=Inches(3.5))
   ```
-- 出力先は `~/dev-projects/<プロジェクト名>/<deck>.pptx` を推奨。
+- 出力先は作業フォルダの `<deck>.pptx`。
 
 ## 注意事項
 
