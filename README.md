@@ -7,6 +7,7 @@ Claude Code 研修の演習で使う素材です。**写っている会社名・
 - まとめて: このページの **Code → Download ZIP**
 - 動画だけ: [sample-talk.mp4 をダウンロード](https://github.com/MichikusaInc/claude-code-training-materials/raw/main/video/sample-talk.mp4)（11秒・約34MB）
 - 会議の音声だけ: [sample-meeting.mp3 をダウンロード](https://github.com/MichikusaInc/claude-code-training-materials/raw/main/audio/sample-meeting.mp3)（5分22秒・約5MB）
+- 関連リンク: [URL一覧.md](URL一覧.md)
 
 ## 中身
 
