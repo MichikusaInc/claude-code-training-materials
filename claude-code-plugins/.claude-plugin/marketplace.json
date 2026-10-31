@@ -1,0 +1,14 @@
+{
+  "name": "michikusa-course-plugins",
+  "description": "Claude Code plugins included with the Michikusa training materials.",
+  "owner": {
+    "name": "Michikusa株式会社"
+  },
+  "plugins": [
+    {
+      "name": "codex-image",
+      "source": "./codex-image",
+      "description": "Generate images with OpenAI GPT Image models from Claude Code."
+    }
+  ]
+}

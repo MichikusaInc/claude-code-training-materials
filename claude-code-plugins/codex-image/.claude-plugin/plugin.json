@@ -1,0 +1,9 @@
+{
+  "name": "codex-image",
+  "version": "1.0.0",
+  "description": "Generate images with OpenAI GPT Image models from Claude Code.",
+  "license": "MIT",
+  "author": {
+    "name": "Michikusa株式会社"
+  }
+}
